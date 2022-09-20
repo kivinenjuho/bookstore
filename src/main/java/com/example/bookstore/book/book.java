@@ -4,17 +4,25 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
-
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 public class book {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	private long id;
-	public String title, author, isbn;
+	private Long id;
+	public String title;
+	public String author;
+	public String isbn;
 	@Column(name="publishing_year") public Integer year;
 	public Integer price;
+	
+	
+	@JsonIgnore
+	
 	
 	public book() {}
 	
@@ -30,6 +38,9 @@ public class book {
 	public long getID() {
 	return id;
 }
+	public void setID(long id) {
+		this.id = id;
+	}
 	public void settitle(String title) {
 		this.title = title;
 	}
